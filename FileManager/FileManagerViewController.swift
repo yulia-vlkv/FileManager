@@ -10,12 +10,14 @@ import UIKit
 class FileManagerViewController: UIViewController {
     
     private let fileManager = FileManager.default
+//    var model = KeyChainModel()
     
     private lazy var documentsURL = try! fileManager.url(for: .documentDirectory,
                                                           in: .userDomainMask,
                                               appropriateFor: nil,
                                                       create: false)
     var directoryContent: [URL] = []
+//    var directoryContentToSort: [URL] = []
     
     private let itemsPerRow: CGFloat = 3
     
@@ -26,6 +28,7 @@ class FileManagerViewController: UIViewController {
                                                 collectionViewLayout: layout)
     
     let detailsVC = DetailsViewController()
+//    let settingVC = SettingsViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +38,19 @@ class FileManagerViewController: UIViewController {
         setupCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+    
     private func setupNavigationBar() {
         navigationController?.navigationBar.isHidden = false
         navigationItem.title = "Images"
-        navigationController?.navigationBar.tintColor = UIColor(named: "dustyTeal")
+        navigationController?.navigationBar.tintColor = CustomColors.setColor(style: .dustyTeal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addImage))
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: "pastelSandy")
+        appearance.backgroundColor = CustomColors.setColor(style: .pastelSandy)
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
@@ -59,13 +66,59 @@ class FileManagerViewController: UIViewController {
                                              includingPropertiesForKeys: nil,
                                                                 options: [])
     }
+    
+//    func sorting() {
+//        let directoryContentToSort = directoryContent.enumerated()
+//        var currentSortingType = KeyChainModel.sortSettings
+//        switch currentSortingType {
+//        case .ascending:
+//            let sorted = directoryContentToSort.sorted { $0.offset < $1.offset }
+//            let sortedDirectoryContent = sorted.map{$0.element}
+//            collectionView.reloadData()
+//            //            directoryContent = directoryContent.sorted { $0.path < $1.path }
+//            print(sortedDirectoryContent)
+//            print("ascending")
+//            print(currentSortingType)
+//        case .descending:
+//            let sorted = directoryContentToSort.sorted { $0.offset > $1.offset }
+//            let sortedDirectoryContent = sorted.map{$0.element}
+//            collectionView.reloadData()
+//            print(sortedDirectoryContent)
+//            print("descending")
+//            print(currentSortingType)
+////        default:
+////            print ("default")
+////        case .none:
+////            print ("default")
+//        }
+//
+//        if settingVC.sortSegmented.selectedSegmentIndex == 0 {
+//            let sorted = directoryContentToSort.sorted { $0.offset < $1.offset }
+//            let sortedDirectoryContent = sorted.map{$0.element}
+//            collectionView.reloadData()
+//            //            directoryContent = directoryContent.sorted { $0.path < $1.path }
+//            print(sortedDirectoryContent)
+//            print("ascending")
+//            print(sortSettings)
+//        } else if settingVC.sortSegmented.selectedSegmentIndex == 1 {
+//            let sorted = directoryContentToSort.sorted { $0.offset > $1.offset }
+//            let sortedDirectoryContent = sorted.map{$0.element}
+//            collectionView.reloadData()
+//            print(sortedDirectoryContent)
+//            print("descending")
+//            print(sortSettings)
+//        }
+//        else {
+//            print ("default")
+//        }
+//    }
 
     private func setupCollectionView(){
         view.addSubview(collectionView)
         
         collectionView.toAutoLayout()
         
-        collectionView.backgroundColor = UIColor(named: "almostWhite")
+        collectionView.backgroundColor = CustomColors.setColor(style: .almostWhite)
         collectionView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         collectionView.contentInsetAdjustmentBehavior = .automatic
         
@@ -93,10 +146,55 @@ extension FileManagerViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.reuseID,
                                                       for: indexPath) as! CollectionViewCell
-        
-        let pictureURL = directoryContent[indexPath.item]
-        cell.pictureImageView.image = UIImage(contentsOfFile: pictureURL.path)
-        return cell
+        var currentSortingType = KeyChainModel.sortSettings
+        switch currentSortingType {
+        case .ascending:
+            let directoryContentToSort = directoryContent.enumerated()
+            let sorted = directoryContentToSort.sorted { $0.offset < $1.offset }
+            let sortedDirectoryContent = sorted.map{$0.element}
+            let pictureURL = sortedDirectoryContent[indexPath.item]
+            cell.pictureImageView.image = UIImage(contentsOfFile: pictureURL.path)
+            print("asc")
+//            collectionView.reloadData()
+            return cell
+        case .descending:
+            let directoryContentToSort = directoryContent.enumerated()
+            let sorted = directoryContentToSort.sorted { $0.offset > $1.offset }
+            let sortedDirectoryContent = sorted.map{$0.element}
+            let pictureURL = sortedDirectoryContent[indexPath.item]
+            cell.pictureImageView.image = UIImage(contentsOfFile: pictureURL.path)
+            print("des")
+//            collectionView.reloadData()
+            return cell
+        }
+//        switch(sortSettings.sortSegmented.selectedSegmentIndex) {
+//        case 0:
+//            let directoryContentToSort = directoryContent.enumerated()
+//            let sorted = directoryContentToSort.sorted { $0.offset < $1.offset }
+//            let sortedDirectoryContent = sorted.map{$0.element}
+//            collectionView.reloadData()
+//            let pictureURL = sortedDirectoryContent[indexPath.item]
+//            cell.pictureImageView.image = UIImage(contentsOfFile: pictureURL.path)
+////            print(sortedDirectoryContent)
+//            print("asc")
+//            print(sortSettings.sortSegmented.selectedSegmentIndex)
+//            return cell
+//        case 1:
+//            let directoryContentToSort = directoryContent.enumerated()
+//            let sorted = directoryContentToSort.sorted { $0.offset > $1.offset }
+//            let sortedDirectoryContent = sorted.map{$0.element}
+//            collectionView.reloadData()
+//            let pictureURL = sortedDirectoryContent[indexPath.item]
+//            cell.pictureImageView.image = UIImage(contentsOfFile: pictureURL.path)
+//            print("des")
+//            collectionView.reloadData()
+//            return cell
+//        default:
+//            let pictureURL = directoryContent[indexPath.item]
+//            cell.pictureImageView.image = UIImage(contentsOfFile: pictureURL.path)
+//            print("default")
+//            collectionView.reloadData()
+//            return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
