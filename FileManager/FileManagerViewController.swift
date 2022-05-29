@@ -35,15 +35,19 @@ class FileManagerViewController: UIViewController {
         setupCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+    
     private func setupNavigationBar() {
         navigationController?.navigationBar.isHidden = false
         navigationItem.title = "Images"
-        navigationController?.navigationBar.tintColor = UIColor(named: "dustyTeal")
+        navigationController?.navigationBar.tintColor = CustomColors.setColor(style: .dustyTeal)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addImage))
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: "pastelSandy")
+        appearance.backgroundColor = CustomColors.setColor(style: .pastelSandy)
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
@@ -65,7 +69,7 @@ class FileManagerViewController: UIViewController {
         
         collectionView.toAutoLayout()
         
-        collectionView.backgroundColor = UIColor(named: "almostWhite")
+        collectionView.backgroundColor = CustomColors.setColor(style: .almostWhite)
         collectionView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         collectionView.contentInsetAdjustmentBehavior = .automatic
         
@@ -93,10 +97,25 @@ extension FileManagerViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.reuseID,
                                                       for: indexPath) as! CollectionViewCell
-        
-        let pictureURL = directoryContent[indexPath.item]
-        cell.pictureImageView.image = UIImage(contentsOfFile: pictureURL.path)
-        return cell
+        var currentSortingType = KeyChainModel.sortSettings
+        switch currentSortingType {
+        case .ascending:
+            let directoryContentToSort = directoryContent.enumerated()
+            let sorted = directoryContentToSort.sorted { $0.offset < $1.offset }
+            let sortedDirectoryContent = sorted.map{$0.element}
+            let pictureURL = sortedDirectoryContent[indexPath.item]
+            cell.pictureImageView.image = UIImage(contentsOfFile: pictureURL.path)
+            print("asc")
+            return cell
+        case .descending:
+            let directoryContentToSort = directoryContent.enumerated()
+            let sorted = directoryContentToSort.sorted { $0.offset > $1.offset }
+            let sortedDirectoryContent = sorted.map{$0.element}
+            let pictureURL = sortedDirectoryContent[indexPath.item]
+            cell.pictureImageView.image = UIImage(contentsOfFile: pictureURL.path)
+            print("des")
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

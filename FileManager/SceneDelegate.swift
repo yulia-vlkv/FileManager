@@ -15,11 +15,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let vc = FileManagerViewController()
+        let vc = PasswordViewController()
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(named: "dustyTeal")
+        let sortType = UserDefaults.standard.string(forKey: "sortType")
+        if let sortType = sortType {
+            KeyChainModel.sortSettings = SortType(rawValue: sortType) ?? .ascending
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

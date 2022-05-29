@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EFA176062838BED2009818B7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA176052838BED2009818B7 /* TabBarController.swift */; };
+		EFA176082838BFDF009818B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA176072838BFDF009818B7 /* SettingsViewController.swift */; };
+		EFA1760A2838C498009818B7 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA176092838C498009818B7 /* PasswordViewController.swift */; };
+		EFA1760D2838DF6B009818B7 /* ButtonTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA1760C2838DF6B009818B7 /* ButtonTitle.swift */; };
+		EFA1760F2838DF7B009818B7 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA1760E2838DF7B009818B7 /* CustomColors.swift */; };
+		EFA1761128394C41009818B7 /* KeyChainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA1761028394C41009818B7 /* KeyChainModel.swift */; };
 		EFA181B9282E8BF80060913C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA181B8282E8BF80060913C /* AppDelegate.swift */; };
 		EFA181BB282E8BF80060913C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA181BA282E8BF80060913C /* SceneDelegate.swift */; };
 		EFA181BD282E8BF80060913C /* FileManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA181BC282E8BF80060913C /* FileManagerViewController.swift */; };
@@ -15,9 +21,16 @@
 		EFA181CD282E8DA70060913C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA181CC282E8DA70060913C /* UIViewExtension.swift */; };
 		EFA181CF282E911A0060913C /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA181CE282E911A0060913C /* CollectionViewCell.swift */; };
 		EFA181D1282EAB9B0060913C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA181D0282EAB9B0060913C /* DetailsViewController.swift */; };
+		EFC8FA77283E3E2200C6FFA6 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC8FA76283E3E2200C6FFA6 /* SortType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EFA176052838BED2009818B7 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		EFA176072838BFDF009818B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EFA176092838C498009818B7 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		EFA1760C2838DF6B009818B7 /* ButtonTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitle.swift; sourceTree = "<group>"; };
+		EFA1760E2838DF7B009818B7 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		EFA1761028394C41009818B7 /* KeyChainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainModel.swift; sourceTree = "<group>"; };
 		EFA181B5282E8BF80060913C /* FileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA181B8282E8BF80060913C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFA181BA282E8BF80060913C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +41,7 @@
 		EFA181CC282E8DA70060913C /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		EFA181CE282E911A0060913C /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		EFA181D0282EAB9B0060913C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		EFC8FA76283E3E2200C6FFA6 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +55,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EFA1760B2838DF4D009818B7 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				EFA1760C2838DF6B009818B7 /* ButtonTitle.swift */,
+				EFC8FA76283E3E2200C6FFA6 /* SortType.swift */,
+				EFA1760E2838DF7B009818B7 /* CustomColors.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		EFA181AC282E8BF80060913C = {
 			isa = PBXGroup;
 			children = (
@@ -60,9 +84,14 @@
 		EFA181B7282E8BF80060913C /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
+				EFA176052838BED2009818B7 /* TabBarController.swift */,
+				EFA181BC282E8BF80060913C /* FileManagerViewController.swift */,
+				EFA176072838BFDF009818B7 /* SettingsViewController.swift */,
+				EFA176092838C498009818B7 /* PasswordViewController.swift */,
+				EFA1761028394C41009818B7 /* KeyChainModel.swift */,
+				EFA1760B2838DF4D009818B7 /* Enum */,
 				EFA181B8282E8BF80060913C /* AppDelegate.swift */,
 				EFA181BA282E8BF80060913C /* SceneDelegate.swift */,
-				EFA181BC282E8BF80060913C /* FileManagerViewController.swift */,
 				EFA181CE282E911A0060913C /* CollectionViewCell.swift */,
 				EFA181D0282EAB9B0060913C /* DetailsViewController.swift */,
 				EFA181CC282E8DA70060913C /* UIViewExtension.swift */,
@@ -145,10 +174,17 @@
 			files = (
 				EFA181BD282E8BF80060913C /* FileManagerViewController.swift in Sources */,
 				EFA181CD282E8DA70060913C /* UIViewExtension.swift in Sources */,
+				EFC8FA77283E3E2200C6FFA6 /* SortType.swift in Sources */,
 				EFA181B9282E8BF80060913C /* AppDelegate.swift in Sources */,
+				EFA1761128394C41009818B7 /* KeyChainModel.swift in Sources */,
 				EFA181BB282E8BF80060913C /* SceneDelegate.swift in Sources */,
+				EFA176062838BED2009818B7 /* TabBarController.swift in Sources */,
+				EFA1760F2838DF7B009818B7 /* CustomColors.swift in Sources */,
 				EFA181CF282E911A0060913C /* CollectionViewCell.swift in Sources */,
+				EFA1760D2838DF6B009818B7 /* ButtonTitle.swift in Sources */,
 				EFA181D1282EAB9B0060913C /* DetailsViewController.swift in Sources */,
+				EFA176082838BFDF009818B7 /* SettingsViewController.swift in Sources */,
+				EFA1760A2838C498009818B7 /* PasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
