@@ -17,14 +17,7 @@ class KeyChainModel {
     static var credentials = Credentials()
     
     static var sortSettings: SortType =  .ascending
-    
-//    static var sortSettings: SortType = SortType(rawValue: UserDefaults.standard.string(forKey: "sortType")!) ?? .ascending
-//    UserDefaults.standard.string(forKey: "sortType")
-//    if let sortSettings = sortSettings {
-//        KeyChainModel.sortType = .init(rawValue: sortSettings)
-//    }
-//    static var sortSettings: SortType = .ascending
-//
+
     func setPassword(with credentials: Credentials) {
         // Переводим пароль в объект класс Data
         guard let passData = credentials.password?.data(using: .utf8) else {

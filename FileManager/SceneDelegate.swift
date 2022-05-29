@@ -15,13 +15,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-//        let tabBarController = TabBarController()
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = tabBarController
-//        window?.makeKeyAndVisible()
-//        window?.windowScene = windowScene
-//        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(named: "dustyTeal")
-        
         let vc = PasswordViewController()
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = UINavigationController(rootViewController: vc)

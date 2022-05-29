@@ -10,14 +10,12 @@ import UIKit
 class FileManagerViewController: UIViewController {
     
     private let fileManager = FileManager.default
-//    var model = KeyChainModel()
     
     private lazy var documentsURL = try! fileManager.url(for: .documentDirectory,
                                                           in: .userDomainMask,
                                               appropriateFor: nil,
                                                       create: false)
     var directoryContent: [URL] = []
-//    var directoryContentToSort: [URL] = []
     
     private let itemsPerRow: CGFloat = 3
     
@@ -28,7 +26,6 @@ class FileManagerViewController: UIViewController {
                                                 collectionViewLayout: layout)
     
     let detailsVC = DetailsViewController()
-//    let settingVC = SettingsViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()

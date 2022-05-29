@@ -107,49 +107,18 @@ class SettingsViewController: UIViewController {
     private var baseInset: CGFloat { return 33 }
     
     @objc func segmentedValueChanged(sender: UISegmentedControl){
-//        let fileManager = FileManagerViewController()
-//        fileManager.sortType = .descending
-//        present(passwordVC, animated: true)
-        print("tapped")
         switch sender.selectedSegmentIndex {
         case 0:
             KeyChainModel.sortSettings = .ascending
             print(KeyChainModel.sortSettings.rawValue)
-//            fileManager.sortType = .ascending
-//            sortSettings = .ascending
-            print("asc")
         case 1:
             KeyChainModel.sortSettings = .descending
             print(KeyChainModel.sortSettings.rawValue)
-//            fileManager.sortType = .descending
-//            sortSettings = .descending
-            print("dec")
         default:
-            print("default")
+            print("Nothing happened")
         }
         UserDefaults.standard.set(KeyChainModel.sortSettings.rawValue, forKey: "sortType")
         print(UserDefaults.standard.string(forKey: "sortType") ?? "error")
     }
-    
-
-//    @objc func changepassword(){
-//        model.passwordMode = .createPassword
-//        let loginVC = LoginViewController(model: model)
-//
-//        present(loginVC, animated: true)
-//    }
-//
-//    @objc func changeSort(sender: UISegmentedControl) {
-//        switch sender.selectedSegmentIndex{
-//        case 0:
-//            model.sortType = .asc
-//        case 1:
-//            model.sortType = .dec
-//        default :
-//            print("default")
-//        }
-//
-//        UserDefaults.standard.set(model.sortType.rawValue, forKey: "sortType")
-//    }
 }
 

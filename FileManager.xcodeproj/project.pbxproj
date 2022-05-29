@@ -55,14 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EFA1760B2838DF4D009818B7 /* New Group */ = {
+		EFA1760B2838DF4D009818B7 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
 				EFA1760C2838DF6B009818B7 /* ButtonTitle.swift */,
 				EFC8FA76283E3E2200C6FFA6 /* SortType.swift */,
 				EFA1760E2838DF7B009818B7 /* CustomColors.swift */,
 			);
-			path = "New Group";
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		EFA181AC282E8BF80060913C = {
@@ -89,7 +89,7 @@
 				EFA176072838BFDF009818B7 /* SettingsViewController.swift */,
 				EFA176092838C498009818B7 /* PasswordViewController.swift */,
 				EFA1761028394C41009818B7 /* KeyChainModel.swift */,
-				EFA1760B2838DF4D009818B7 /* New Group */,
+				EFA1760B2838DF4D009818B7 /* Enum */,
 				EFA181B8282E8BF80060913C /* AppDelegate.swift */,
 				EFA181BA282E8BF80060913C /* SceneDelegate.swift */,
 				EFA181CE282E911A0060913C /* CollectionViewCell.swift */,

@@ -80,22 +80,8 @@ class PasswordViewController: UIViewController {
     
     func updateToUpdate(){
         enterButton.setTitle(ButtonTitle.updatePassword.rawValue, for: .normal)
-//        model.deletePassword(with: credentials)
         currentState = .updatePassword
     }
-    
-//    public var initialState: State?
-//    var currentState: State = .enterPassword
-    
-//    private func configureWithState(newState: State){
-//        switch (currentState, newState) {
-//        case (.enterPassword, .updatePassword):
-//            print("update state")
-//
-//        default:
-//            print("incorrect state")
-//        }
-//    }
     
     private func configureWithState(newState: State) {
         switch newState {
