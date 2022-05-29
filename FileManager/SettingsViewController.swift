@@ -10,12 +10,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-//    var credentials = KeyChainModel.credentials
-//    var model = KeyChainModel()
-    
-//    var completionHandler: ((Int) -> Void)?
-//    public var sortSettings: SortType = .ascending
-    
     private let changePasswordButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = CustomColors.setColor(style: .pastelSandy)
